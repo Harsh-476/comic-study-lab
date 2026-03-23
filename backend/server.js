@@ -33,7 +33,13 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200,
 };
+const cors = require("cors");
 
+app.use(cors({
+  origin: "*",  // use your frontend URL later for security
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(cors(corsOptions));
 // Ensure preflight requests are handled with the same CORS options
 app.options("*", cors(corsOptions));
