@@ -5,7 +5,8 @@ import Bg from "./components/bg.jsx";
 import envelopeImage from "./assets/envelope.png";
 
 function Page7() {
-  const API_URL = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
+  // Use Vite environment variable for API base URL. Ensure VITE_API_URL is set in your .env.
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   const [showReviewModal, setShowReviewModal] = useState(false);

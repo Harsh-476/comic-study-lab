@@ -13,7 +13,31 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI || "";
 const JWT_SECRET = process.env.JWT_SECRET || "";
 
-app.use(cors());
+// Configure CORS
+// FRONTEND_URL can be a single origin or a comma-separated list of allowed origins.
+// Example: FRONTEND_URL=http://localhost:5173,https://your-frontend.app
+const FRONTEND_URLS = (process.env.FRONTEND_URL || "http://localhost:5173")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (e.g., curl, mobile apps, server-to-server)
+    if (!origin) return callback(null, true);
+    if (FRONTEND_URLS.indexOf(origin) !== -1) {
+      return callback(null, true);
+    }
+    return callback(new Error("CORS policy: This origin is not allowed."));
+  },
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+// Ensure preflight requests are handled with the same CORS options
+app.options("*", cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.resolve("uploads")));

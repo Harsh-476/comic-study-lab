@@ -25,7 +25,8 @@ const formatFileSize = (bytes) => {
 };
 
 function PostsPage() {
-  const API_URL = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
+  // Use Vite environment variable for API base URL. Ensure VITE_API_URL is set in your .env.
+  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [uploads, setUploads] = useState([]);
   const [status, setStatus] = useState(null);
