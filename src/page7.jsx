@@ -5,7 +5,7 @@ import Bg from "./components/bg.jsx";
 import envelopeImage from "./assets/envelope.png";
 
 function Page7() {
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
   const navigate = useNavigate();
 
   const [showReviewModal, setShowReviewModal] = useState(false);

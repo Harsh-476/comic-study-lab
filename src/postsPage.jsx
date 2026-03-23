@@ -25,7 +25,7 @@ const formatFileSize = (bytes) => {
 };
 
 function PostsPage() {
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
   const navigate = useNavigate();
   const [uploads, setUploads] = useState([]);
   const [status, setStatus] = useState(null);

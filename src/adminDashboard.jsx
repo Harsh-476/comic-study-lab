@@ -33,7 +33,7 @@ const formatFileSize = (bytes) => {
 };
 
 function AdminDashboard() {
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  const API_URL = import.meta.env.VITE_API_URL || "https://your-backend.up.railway.app";
   const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);

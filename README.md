@@ -26,7 +26,7 @@ backend/ (Express API)
 	uploads/               -> stored files (gitignored)
 ```
 
-Frontend calls the backend using the `VITE_API_URL` environment variable (defaults to `http://localhost:5000`). Auth tokens and profile data are cached in `localStorage` and attached to upload requests.
+Frontend calls the backend using the `VITE_API_URL` environment variable (defaults to `https://your-backend.up.railway.app`). Auth tokens and profile data are cached in `localStorage` and attached to upload requests.
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ PORT=5000
 Create `frontend/.env` or add to the root `.env` consumed by Vite:
 
 ```
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=https://your-backend.up.railway.app
 ```
 
 `VITE_API_URL` should point to wherever the backend runs (include protocol and port).
