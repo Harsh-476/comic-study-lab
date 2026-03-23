@@ -5,6 +5,13 @@ import "./postsPage.css";
 import { API_URL, apiFetch, withBase } from "./lib/api";
 
 const buildFileUrl = (baseUrl, relativeUrl) => {
+  if (!baseUrl) {
+    try {
+      return new URL(relativeUrl).href;
+    } catch {
+      return relativeUrl;
+    }
+  }
   try {
     return new URL(relativeUrl, baseUrl).href;
   } catch {
@@ -26,7 +33,8 @@ const formatFileSize = (bytes) => {
 };
 
 function PostsPage() {
-  // API_URL is provided by src/lib/api and falls back to localhost with a warning when missing.
+  // API_URL is provided by src/lib/api. If VITE_API_URL is not set, requests
+  // will be made relative to the frontend origin and a console warning will be shown.
   const navigate = useNavigate();
   const [uploads, setUploads] = useState([]);
   const [status, setStatus] = useState(null);
@@ -57,7 +65,7 @@ function PostsPage() {
       setStatus({ type: "error", message: "This post does not include a file to view." });
       return;
     }
-    const fileUrl = buildFileUrl(API_URL || withBase(""), upload.fileUrl);
+  const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
     window.open(fileUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -67,7 +75,7 @@ function PostsPage() {
       return;
     }
 
-  const fileUrl = buildFileUrl(API_URL || withBase(""), upload.fileUrl);
+  const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
 
     try {
       const response = await fetch(fileUrl);

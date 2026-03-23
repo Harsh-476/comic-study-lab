@@ -13,6 +13,16 @@ const countWords = (text = "") =>
     .filter(Boolean).length;
 
 const buildFileUrl = (baseUrl, relativeUrl) => {
+  // If baseUrl is not provided, return the relativeUrl as-is (it will be
+  // requested relative to the frontend origin). If relativeUrl is already
+  // absolute, return it.
+  if (!baseUrl) {
+    try {
+      return new URL(relativeUrl).href;
+    } catch {
+      return relativeUrl;
+    }
+  }
   try {
     return new URL(relativeUrl, baseUrl).href;
   } catch {
@@ -245,7 +255,7 @@ function AdminDashboard() {
       setStatus({ type: "error", message: "This post does not include a file to view." });
       return;
     }
-    const fileUrl = buildFileUrl(API_URL || withBase(""), upload.fileUrl);
+  const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
     window.open(fileUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -255,7 +265,7 @@ function AdminDashboard() {
       return;
     }
 
-  const fileUrl = buildFileUrl(API_URL || withBase(""), upload.fileUrl);
+  const fileUrl = buildFileUrl(API_URL, upload.fileUrl);
 
     try {
       const response = await fetch(fileUrl);

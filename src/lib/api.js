@@ -6,14 +6,19 @@ export const API_URL = raw && String(raw).trim() ? String(raw).replace(/\/+$/, "
 if (!API_URL) {
   // eslint-disable-next-line no-console
   console.warn(
-    "VITE_API_URL is not set. Frontend will fall back to http://localhost:5000 for API requests.\nSet VITE_API_URL in your .env to avoid this warning."
+    "VITE_API_URL is not set. API requests will be made relative to the current origin.\nSet VITE_API_URL in your .env to point to your backend (e.g. https://api.example.com)"
   );
 }
 
 export function withBase(path) {
-  const base = API_URL || "http://localhost:5000";
-  if (!path) return base;
-  return `${base.replace(/\/+$/, "")}${path.startsWith("/") ? path : "/" + path}`;
+  // If API_URL is provided use absolute URL, otherwise return a relative path so
+  // requests go to the same origin as the frontend (no explicit localhost fallback).
+  if (!API_URL) {
+    if (!path) return "";
+    return path.startsWith("/") ? path : "/" + path;
+  }
+  if (!path) return API_URL;
+  return `${API_URL.replace(/\/+$/, "")}${path.startsWith("/") ? path : "/" + path}`;
 }
 
 export async function apiFetch(path, options) {
