@@ -60,7 +60,7 @@ const facultyData = [
   { img: p11, name: "Shiv Kumar Verma", link: "https://www.iitj.ac.in/People/Profile/5ec81473-67aa-48ed-9533-b2ecd2456e32", domain: "" },
   { img: p12, name: "Sumit Kalra", link: "https://www.iitj.ac.in/People/Profile/fcf966fb-01fe-4660-9fb3-fa692911a86a", domain: "Assistant Professor, Department of CSE" },
   { img: p13, name: "Sunil Kumar Lohar", link: "https://www.iitj.ac.in/People/Profile/5ee5e2a2-ebcc-471c-9287-3987cdac57e2", domain: "" },
-  { img: p14, name: "Tonisha Guin", link: "https://www.iitj.ac.in/People/Profile/f67cd3f4-1f9c-4e00-b460-57e0f1752ae5", domain: "" },
+  { img: p14, name: "Amrita Puri", link: "https://www.iitj.ac.in/People/Profile/f2329e77-fa84-47d6-a2e0-6411ee287390", domain: "" },
 ];
 
 const artistData = [
