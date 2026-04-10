@@ -1,0 +1,242 @@
+/* ============================================
+   PAGE 9 — Creatives Hub Navigation
+   Zigzag link layout + bg elements exactly
+   matching the screenshot provided
+   ============================================ */
+
+.page8-container {
+  position: relative;
+  min-height: 100vh;
+  background-color: black;
+  font-family: "Comic Neue", cursive;
+  color: white;
+  overflow: hidden;
+}
+
+/* ============================================
+   ZIGZAG NAV LINKS
+   Each link is absolutely positioned to match
+   the exact positions visible in the screenshot:
+   - Creatives: Projects  → top-right area
+   - Creatives: Comics    → middle-left area
+   - Creatives: Videos    → lower-right area
+   ============================================ */
+
+.page8-link {
+  position: absolute;
+  font-family: "Comic Neue", cursive;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: white;
+  text-decoration-thickness: 2px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeUp 2s ease-in-out forwards;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  z-index: 10;
+}
+
+.page8-link:hover {
+  color: white;
+  text-shadow: 0 0 15px #ffd166, 0 0 30px rgba(255, 209, 102, 0.4);
+  text-decoration-color: #ffd166;
+}
+
+/* Creatives: Projects — top-right area */
+.link-projects {
+  top: 18%;
+  left: 46%;
+  animation-delay: 0.2s;
+}
+
+/* Creatives: Comics — middle-left area */
+.link-comics {
+  top: 46%;
+  left: 12%;
+  animation-delay: 0.5s;
+}
+
+/* Creatives: Videos — lower-right area */
+.link-videos {
+  top: 65%;
+  left: 54%;
+  animation-delay: 0.8s;
+}
+
+/* ============================================
+   BACKGROUND DECORATIVE ELEMENTS
+   Individually placed to match screenshot exactly
+   ============================================ */
+
+.page8-bg-item {
+  position: fixed;
+  opacity: 0;
+  animation: smoothFadeIn 2.5s ease forwards;
+  z-index: 0;
+}
+
+/* Swirl — top-left corner */
+.page8-swirl1 {
+  top: 5%;
+  left: 1%;
+  width: 30px;
+  animation-delay: 2.3s;
+}
+
+/* Two stars — top-right stacked */
+.page8-star3 {
+  top: 10%;
+  right: 9%;
+  width: 30px;
+  animation-delay: 0.8s;
+}
+
+.page8-star4 {
+  top: 14%;
+  right: 7%;
+  width: 30px;
+  animation-delay: 1.1s;
+}
+
+/* Leaf — top-right */
+.page8-leaf2 {
+  top: 15%;
+  right: 11%;
+  width: 30px;
+  animation-delay: 1.7s;
+}
+
+/* Leaf — middle-left */
+.page8-leaf3 {
+  top: 37%;
+  left: 19%;
+  width: 30px;
+  animation-delay: 2s;
+}
+
+/* Leaf — middle-right */
+.page8-leaf1 {
+  top: 40%;
+  right: 20%;
+  width: 30px;
+  animation-delay: 1.4s;
+}
+
+/* Star — left middle */
+.page8-star1 {
+  top: 47%;
+  left: 5%;
+  width: 30px;
+  animation-delay: 0.2s;
+}
+
+/* Star — center lower */
+.page8-star2 {
+  top: 72%;
+  left: 31%;
+  width: 30px;
+  animation-delay: 0.5s;
+}
+
+/* Swirl — right middle */
+.page8-swirl2 {
+  top: 57%;
+  right: 4%;
+  width: 30px;
+  animation-delay: 2.6s;
+}
+
+/* ============================================
+   CHARACTER FIGURES — bottom-left
+   Exactly matching screenshot positions
+   ============================================ */
+
+.page8-char {
+  position: fixed;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  z-index: 5;
+}
+
+.page8-char:hover {
+  transform: scale(1.4);
+  cursor: pointer;
+}
+
+/* s1 — large rotating hologram on blue platform */
+.page8-c1 {
+  bottom: 14%;
+  left: 6%;
+  width: 100px;
+  animation: rotate360 8s linear infinite, glow 2.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 200, 0.6));
+  transform-origin: center;
+}
+
+/* s2 — small figure far-left */
+.page8-c2 {
+  bottom: 1%;
+  left: 1%;
+  width: 50px;
+  animation: rotate360 10s linear infinite reverse, glow 2.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 200, 0.6));
+}
+
+/* s3 — small figure center-left */
+.page8-c3 {
+  bottom: 1%;
+  left: 8%;
+  width: 50px;
+  animation: rotate360 9s linear infinite, glow 2.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 200, 0.6));
+}
+
+/* s4 — small figure slightly right */
+.page8-c4 {
+  bottom: 1%;
+  left: 15%;
+  width: 50px;
+  animation: rotate360 11s linear infinite reverse, glow 2.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 200, 0.6));
+}
+
+/* ============================================
+   SHARED ANIMATIONS
+   ============================================ */
+
+@keyframes rotate360 {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+@keyframes glow {
+  0%   { filter: drop-shadow(0 0 10px #00ffc8); }
+  100% { filter: drop-shadow(0 0 25px #00b3ff); }
+}
+
+@keyframes fadeUp {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes smoothFadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .page8-link { font-size: 1.8rem; }
+  .link-projects { top: 15%; left: 35%; }
+  .link-comics   { top: 42%; left: 5%;  }
+  .link-videos   { top: 62%; left: 35%; }
+  .page8-c1 { width: 70px; }
+  .page8-c2, .page8-c3, .page8-c4 { width: 36px; }
+}
