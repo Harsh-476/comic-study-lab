@@ -17,6 +17,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "";
 const allowedOrigins = [
   "http://localhost:5173",
   "https://comic-study-lab.vercel.app",
+  "https://comic-study-lab-1.vercel.app", // ADD THIS
 ];
 
 const corsOptions = {
