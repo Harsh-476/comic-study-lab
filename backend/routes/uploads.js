@@ -76,7 +76,7 @@ router.get("/", authenticate, async (_req, res) => {
   }
 });
 
-router.get("/", authenticate, async (_req, res) => {
+router.post("/", authenticate, upload.single("file"), async (req, res) => {
   try {
     if (req.userRole !== "admin") {
       return res.status(403).json({ message: "Admin access required" });
