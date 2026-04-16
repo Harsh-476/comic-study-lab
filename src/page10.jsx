@@ -9,6 +9,8 @@ import doodle from "./assets/curl.png";
 import leaf   from "./assets/leaf.png";
 import star   from "./assets/star.png";
 
+const SEGMENT = "projects";
+
 const buildFileUrl = (baseUrl, relativeUrl) => {
   if (!baseUrl) {
     try { return new URL(relativeUrl).href; } catch { return relativeUrl; }
@@ -43,7 +45,7 @@ const Projects = () => {
 
     const fetchUploads = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads?segment=${SEGMENT}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.status === 401 || res.status === 403) {

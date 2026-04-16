@@ -16,6 +16,23 @@ import Page13 from "./page13.jsx";
 import Page14 from "./page14.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+const getStoredRole = () => {
+  const storedUser = localStorage.getItem("cs_lab_user");
+  if (!storedUser) return "user";
+
+  try {
+    return JSON.parse(storedUser)?.role === "admin" ? "admin" : "user";
+  } catch {
+    localStorage.removeItem("cs_lab_user");
+    return "user";
+  }
+};
+
+function RoleSegmentRedirect({ adminPath, userPath }) {
+  const role = getStoredRole();
+  return <Navigate to={role === "admin" ? adminPath : userPath} replace />;
+}
+
 function App() {
   return (
     <Routes>
@@ -30,22 +47,30 @@ function App() {
 
       {/* ── Page 8: Creatives Hub — post-login landing for BOTH roles ── */}
       <Route path="/page8"        element={<Page8 />} />
-      <Route path="/page8/comics" element={<Page8 />} />
-      <Route path="/page8/videos" element={<Page8 />} />
 
       {/* ── Page 9 (admin) / Page 10 (user): Creatives — Projects ── */}
-      {/* One route, component reads role from localStorage internally */}
       <Route path="/page9"          element={<Page9 />} />
-      <Route path="/page8/projects" element={<Page9 />} />
+      <Route
+        path="/page8/projects"
+        element={<RoleSegmentRedirect adminPath="/page9" userPath="/page10" />}
+      />
       <Route path="/page10"         element={<Page10 />} />
 
       {/* ── Page 11: Creatives — Comics (admin) ── */}
       <Route path="/page11" element={<Page11 />} />
       <Route path="/page12" element={<Page12 />} />
+      <Route
+        path="/page8/comics"
+        element={<RoleSegmentRedirect adminPath="/page11" userPath="/page12" />}
+      />
 
       {/* ── Page 13 (admin) / Page 14 (user): Creatives — Videos ── */}
       <Route path="/page13" element={<Page13 />} />
       <Route path="/page14" element={<Page14 />} />
+      <Route
+        path="/page8/videos"
+        element={<RoleSegmentRedirect adminPath="/page13" userPath="/page14" />}
+      />
 
       {/* ── Legacy redirects so old bookmarks don't 404 ── */}
       <Route path="/dashboard" element={<Navigate to="/page8" replace />} />

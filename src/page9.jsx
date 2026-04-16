@@ -10,6 +10,7 @@ import "./page9.css";
 
 /* ── helpers ─────────────────────────────────────────────────── */
 const MAX_WORDS = 1000;
+const SEGMENT = "projects";
 const countWords = (text = "") =>
   text.trim().split(/\s+/).filter(Boolean).length;
 
@@ -60,18 +61,27 @@ function Page9() {
       return;
     }
 
+    if (!isAdmin) {
+      navigate("/page10", { replace: true });
+      return;
+    }
+
     let cancelled = false;
 
     const fetchUploads = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads?segment=${SEGMENT}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        if (res.status === 401 || res.status === 403) {
+        if (res.status === 401) {
           localStorage.removeItem("cs_lab_token");
           localStorage.removeItem("cs_lab_user");
           navigate("/page7", { replace: true });
+          return;
+        }
+        if (res.status === 403) {
+          navigate("/page10", { replace: true });
           return;
         }
 
@@ -87,7 +97,7 @@ function Page9() {
 
     fetchUploads();
     return () => { cancelled = true; };
-  }, [navigate, token]);
+  }, [navigate, token, isAdmin]);
 
   /* ── handlers (admin) ── */
   const isValidUrl = (v) => {
@@ -115,6 +125,7 @@ function Page9() {
     }
 
     const formData = new FormData();
+    formData.append("segment", SEGMENT);
     if (trimDesc) formData.append("description", trimDesc);
     if (file)     formData.append("file", file);
     if (trimLink) formData.append("link", trimLink);

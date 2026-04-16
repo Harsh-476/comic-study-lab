@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "./page11.css";
 
 const MAX_WORDS = 1000;
+const SEGMENT = "comics";
 const countWords = (text = "") =>
   text.trim().split(/\s+/).filter(Boolean).length;
 
@@ -50,21 +51,31 @@ export default function CreativesComics() {
 
   /* ── guard: must be logged-in admin ── */
   useEffect(() => {
-    if (!token || !isAdmin) {
+    if (!token) {
       navigate("/page7", { replace: true });
       return;
     }
+
+    if (!isAdmin) {
+      navigate("/page12", { replace: true });
+      return;
+    }
+
     let cancelled = false;
 
     const fetchUploads = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/uploads?segment=${SEGMENT}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        if (res.status === 401 || res.status === 403) {
+        if (res.status === 401) {
           localStorage.removeItem("cs_lab_token");
           localStorage.removeItem("cs_lab_user");
           navigate("/page7", { replace: true });
+          return;
+        }
+        if (res.status === 403) {
+          navigate("/page12", { replace: true });
           return;
         }
         const data = await res.json();
@@ -112,6 +123,7 @@ export default function CreativesComics() {
     }
 
     const formData = new FormData();
+    formData.append("segment", SEGMENT);
     if (trimDesc) formData.append("description", trimDesc);
     if (file)     formData.append("file", file);
     if (trimLink) formData.append("link", trimLink);
@@ -132,6 +144,7 @@ export default function CreativesComics() {
       }
       if (res.status === 403) {
         setStatus({ type: "error", message: "Only admins can upload posts." });
+        navigate("/page12", { replace: true });
         return;
       }
       const data = await res.json();
