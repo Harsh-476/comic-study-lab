@@ -82,11 +82,11 @@ const artistData = [
   { img: Artist16, name: "Nasreen Sultana Mitu", link: "https://en.wikipedia.org/wiki/Nasreen_Sultana_Mitu" },
   { img: Artist17, name: "Nick Sousanis", link: "https://liberalstudies.sfsu.edu/people/nick-sousanis" },
   { img: Artist18, name: "Nigar Nazar", link: "https://en.wikipedia.org/wiki/Nigar_Nazar" },
-  { img: Artist19, name: "Promina Shrestha", link: "https://np.linkedin.com/in/promina-shrestha-7ab09550" },
+  { img: Artist19, name: "Bandana Tulachan", link: "https://bandanatulachan.com.np/about-contact/" },
   { img: Artist20, name: "Reynaldo Anderson", link: "https://liberalarts.temple.edu/directory/reynaldo-anderson" },
   { img: Artist21, name: "Sachie Diriweera", link: "https://ae.linkedin.com/in/sachiediriweera" },
   { img: Artist22, name: "Sean Eedy", link: "https://www.trentu.ca/history/sean-eedy" },
-  { img: Artist23, name: "Stephan Packard", link: "https://mekuwi.phil-fak.uni-koeln.de/en/personen/professor-innen/prof-dr-stephan-packard" },
+  { img: Artist23, name: "Vasily Shikhachevsky", link: "https://www.hse.ru/en/org/persons/212310878/" },
   { img: Artist24, name: "Tahneer Oksman", link: "https://www.mmm.edu/live/profiles/342-tahneer-oksman" },
   { img: Artist25, name: "Tessa Pijnaker", link: "https://www.uu.nl/staff/TPijnaker" },
 ];
