@@ -52,20 +52,20 @@ const facultyData = [
   { img: p3, name: "Avinash Sharma", link: "https://www.iitj.ac.in/People/Profile/bc795393-557c-4140-8c14-932a5953a6a1", domain: "" },
   { img: p4, name: "Bhaskar Kumar Kakati", link: "https://www.iitj.ac.in/People/Profile/ad3ffc2b-3584-45fd-ba35-6df22730752d", domain: "" },
   { img: p5, name: "Tekcham Gishan Singh", link: "https://www.iitj.ac.in/People/Profile/7add6e5a-c957-4fa1-919c-5261a5b11427", domain: "" },
-  { img: p6, name: "Jayant Kumar", link: "https://www.iitj.ac.in/People/Profile/b5d0ced7-bfcf-4e23-90c6-825932f6994f", domain: "" },
-  { img: p7, name: "Natasha Thoudam", link: "https://www.iitj.ac.in/People/Profile/5865953b-a756-4109-8f81-d9d4a2a3e1bf", domain: "" },
+  { img: p6, name: "Jayant Kumar Mohanta", link: "https://www.iitj.ac.in/People/Profile/b5d0ced7-bfcf-4e23-90c6-825932f6994f", domain: "" },
+  { img: p7, name: "Natasa Thoudam", link: "https://www.iitj.ac.in/People/Profile/5865953b-a756-4109-8f81-d9d4a2a3e1bf", domain: "" },
   { img: p8, name: "Pranjal Protim Bohra", link: "https://www.iitj.ac.in/People/Profile/4655e252-8e25-4d9a-938c-c0e2d062c21b", domain: "" },
   { img: p9, name: "Prasenjeet A. Tribhuvan", link: "https://www.iitj.ac.in/People/Profile/c0082c31-6c2a-4f7f-9405-e123d7b05342", domain: "" },
   { img: p10, name: "Romi Banerjii", link: "https://www.iitj.ac.in/People/Profile/cbfae589-0b31-43d8-8a49-4990247e8628", domain: "" },
   { img: p11, name: "Shiv Kumar Verma", link: "https://www.iitj.ac.in/People/Profile/5ec81473-67aa-48ed-9533-b2ecd2456e32", domain: "" },
-  { img: p12, name: "Sumit Kalra", link: "https://www.iitj.ac.in/People/Profile/fcf966fb-01fe-4660-9fb3-fa692911a86a", domain: "Assistant Professor, Department of CSE" },
+  { img: p12, name: "Sumit Kalra", link: "https://www.iitj.ac.in/People/Profile/fcf966fb-01fe-4660-9fb3-fa692911a86a", domain: "" },
   { img: p13, name: "Sunil Kumar Lohar", link: "https://www.iitj.ac.in/People/Profile/5ee5e2a2-ebcc-471c-9287-3987cdac57e2", domain: "" },
   { img: p14, name: "Amrita Puri", link: "https://www.iitj.ac.in/People/Profile/f2329e77-fa84-47d6-a2e0-6411ee287390", domain: "" },
 ];
 
 const artistData = [
   { img: Artist1, name: "Aaron Kashtan", link: "https://writing.charlotte.edu/people/aaron-kashtan/" },
-  { img: Artist2, name: "Dr Ann Miller", link: "https://le.ac.uk/people/ann-miller" },
+  { img: Artist2, name: "Ann Miller", link: "https://le.ac.uk/people/ann-miller" },
   { img: Artist3, name: "Antonio Paoliello Palermo", link: "https://portalrecerca.uab.cat/en/persons/antonio-paoliello-palermo/" },
   { img: Artist4, name: "Anthony Y. H. Fung", link: "https://www.com.cuhk.edu.hk/people/fung-anthony-y-h/" },
   { img: Artist5, name: "", link: "https://www.hkiaps.cuhk.edu.hk/people/" },
@@ -75,10 +75,10 @@ const artistData = [
   { img: Artist8, name: "Felipe Muhr", link: "https://www.comics.ugent.be/felipe-muhr/" },
   { img: Artist9, name: "Héctor Fernández-L'Hoeste", link: "https://cas.gsu.edu/profile/hector-fernandez-lhoeste/" },
   { img: Artist10, name: "", link: "https://www.tandfonline.com/journals/rcom20/about-this-journal#editorial-board" },
-  { img: Artist11, name: "Dr. Kinko Ito", link: "https://ualr.edu/sociology/faculty/ito/" },
+  { img: Artist11, name: "Kinko Ito", link: "https://ualr.edu/sociology/faculty/ito/" },
   { img: Artist12, name: "Maaheen Ahmed", link: "https://research.flw.ugent.be/en/maaheen.ahmed" },
   { img: Artist13, name: "Makayla Lewis", link: "https://makaylalewis.co.uk/" },
-  { img: Artist14, name: "Natasha Thoudam", link: "https://www.iitj.ac.in/People/Profile/5865953b-a756-4109-8f81-d9d4a2a3e1bf" },
+  { img: Artist14, name: "Natasa Thoudam", link: "https://www.iitj.ac.in/People/Profile/5865953b-a756-4109-8f81-d9d4a2a3e1bf" },
   { img: Artist16, name: "Nasreen Sultana Mitu", link: "https://en.wikipedia.org/wiki/Nasreen_Sultana_Mitu" },
   { img: Artist17, name: "Nick Sousanis", link: "https://liberalstudies.sfsu.edu/people/nick-sousanis" },
   { img: Artist18, name: "Nigar Nazar", link: "https://en.wikipedia.org/wiki/Nigar_Nazar" },
@@ -132,7 +132,7 @@ function Page5() {
       {/* === Students Section === */}
       <div className="students-section" style={{ marginTop: "30px" }}>
         <h2 className="student-title">IITJ Students</h2>
-        <p>75 students & alumni</p>
+        <p>138 students & alumni</p>
       </div>
 
       {/* === Artists Section === */}
